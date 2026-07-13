@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grizzle Obby</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" aria-label="Grizzle Obby game canvas"></canvas>
+
+      <section class="hud top-left">
+        <div class="brand">Grizzle Obby</div>
+        <div class="mode-line">
+          <span id="modeName">SPIN</span>
+          <span id="modeTimer">00:00</span>
+        </div>
+        <div class="meter">
+          <span>Stage</span>
+          <strong id="stageReadout">1 / 200</strong>
+        </div>
+        <div class="meter rift-meter">
+          <span>Rift</span>
+          <strong id="riftReadout">0 streak</strong>
+        </div>
+        <div class="meter power-meter">
+          <span>Power</span>
+          <strong id="powerReadout">none</strong>
+        </div>
+        <div class="meter">
+          <span>AI</span>
+          <strong id="aiDifficultyReadout">Hard</strong>
+        </div>
+        <div id="ammoMeter" class="meter hidden">
+          <span>Ammo</span>
+          <strong id="ammoReadout">50 / 50</strong>
+        </div>
+      </section>
+
+      <section class="hud top-right">
+        <div class="currency"><span>Bricks</span><strong id="bricks">300</strong></div>
+        <div class="currency"><span>Grizzles</span><strong id="grizzles">1</strong></div>
+      </section>
+
+      <section class="hud bottom-left">
+        <button id="spinBtn" class="primary">Choose Mode</button>
+        <button id="shopBtn">Shop</button>
+        <button id="resetBtn">Respawn</button>
+      </section>
+
+      <section class="hud bottom-right">
+        <ol id="leaderboard" class="leaderboard"></ol>
+      </section>
+
+      <div id="wheelModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wheelTitle">
+        <div class="panel wheel-panel">
+          <div>
+            <h1 id="wheelTitle">Choose Game Mode</h1>
+            <p id="wheelResult">Pick the next obby challenge.</p>
+          </div>
+          <div class="difficulty-picker" aria-label="AI difficulty">
+            <span>AI Difficulty</span>
+            <div id="aiDifficultyChoices" class="difficulty-choices"></div>
+          </div>
+          <section class="chooser-section">
+            <h2>Game Modes</h2>
+            <div id="modeChoices" class="mode-grid"></div>
+          </section>
+          <section class="chooser-section challenge-section">
+            <h2>Challenges</h2>
+            <div id="challengeChoices" class="mode-grid"></div>
+          </section>
+        </div>
+      </div>
+
+      <div id="shopModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="shopTitle">
+        <div class="panel shop-panel">
+          <div class="panel-head">
+            <h1 id="shopTitle">Shop</h1>
+            <button id="closeShopBtn" class="icon-btn" aria-label="Close shop">X</button>
+          </div>
+
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="gear">Gear</button>
+            <button class="tab" data-tab="eggs">Eggs</button>
+            <button class="tab" data-tab="grizzles">Grizzles</button>
+          </div>
+
+          <div id="shopItems" class="shop-grid"></div>
+        </div>
+      </div>
+
+      <div id="toast" class="toast hidden"></div>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
